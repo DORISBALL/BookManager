@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import=" com.gdut.bean.*"  import=" com.gdut.book.*" import ="java.util.ArrayList"
     pageEncoding="utf-8"%>
-<%@ page import="com.gdut.bean.BookConn" %>
+<%@ page import="com.gdut.dao.BookDao" %>
 <%@ page import="com.gdut.book.Book" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -72,7 +72,7 @@
 										</thead>
 										<tbody id="tUser">
 										
-										<% BookConn bookconn=new BookConn(); ArrayList<Book> list=bookconn.list_return();
+										<% BookDao bookconn=new BookDao(); ArrayList<Book> list=bookconn.queryBook();
 										for (int i=0;i<list.size();i++) {
 										%>
 										

@@ -1,6 +1,6 @@
 package com.gdut.servlet;
 
-import com.gdut.bean.ModifyBook;
+import com.gdut.dao.BookDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,8 +45,7 @@ public class AddbookServlet extends HttpServlet {
 		String publish=request.getParameter("publish");
 		int isbn=Integer.parseInt( request.getParameter("isbn"));
 		int price=Integer.parseInt( request.getParameter("price"));
-		ModifyBook modify=new ModifyBook();
-		modify.modify(isbn, price, author, publish, bookname);
+		BookDao.updateBook(isbn, price, author, publish, bookname);
 		
 		//解决中文乱码
 		 response.setContentType("text/html; charset=utf-8");
