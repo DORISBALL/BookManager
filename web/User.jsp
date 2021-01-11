@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import=" com.mysql.bean.*"  import=" com.mysql.user.*" import ="java.util.ArrayList" %>
+    pageEncoding="utf-8" import=" com.gdut.bean.*"  import=" com.gdut.user.*" import ="java.util.ArrayList" %>
+<%@ page import="com.gdut.bean.BookRentConn" %>
+<%@ page import="com.gdut.user.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,7 +101,7 @@
 											</tr>
 										</thead>
 										<tbody id="tUser">
-											<% BookRentConn bookrentconn=new BookRentConn(); ArrayList<User> list=bookrentconn.list_return(); 
+											<% BookRentConn bookrentconn=new BookRentConn(); ArrayList<User> list=bookrentconn.list_return();
 										for (int i=0;i<list.size();i++) {
 										%>
 											<tr>
