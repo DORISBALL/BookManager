@@ -7,7 +7,7 @@ package com.gdut.dao;
  */
 public class DBConnect {
     public static final String SCHEMA_NAME = "normalinfo";
-    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/" + SCHEMA_NAME + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3307/" + SCHEMA_NAME + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";
     public static final String JDBC_USER = "root";
-    public static final String JDBC_PASSWORD = "qiulishanya533";
+    public static final String JDBC_PASSWORD = "123";
 }

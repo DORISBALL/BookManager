@@ -4,14 +4,20 @@
     <data-source source="LOCAL" name="@localhost" uuid="cdaec2fb-90db-4d12-9257-633a91295350">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3307?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="normalinfo@localhost" uuid="2fb0468b-3807-407f-90ac-ad8f0c23f65b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/normalinfo</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="normalinfo@localhost [2]" uuid="ffac5505-71c5-4e5b-937a-f0a9c5cc6f5a">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3307/normalinfo?useUnicode=true&amp;characterEncoding=UTF-8&amp;userSSL=false&amp;serverTimezone=GMT%2B8</jdbc-url>
     </data-source>
   </component>
 </project>

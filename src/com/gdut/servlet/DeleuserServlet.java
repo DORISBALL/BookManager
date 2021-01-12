@@ -1,15 +1,14 @@
 package com.gdut.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.gdut.dao.BookRentDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.gdut.bean.UserDelConn;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Servlet implementation class DeleuserServlet
@@ -42,9 +41,10 @@ public class DeleuserServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//获取到要添加书籍的信息
 		 String name=request.getParameter("name");
-		
-		UserDelConn del=new UserDelConn();
-		del.delete(name);
+
+		BookRentDao bookRentDao = new BookRentDao();
+		bookRentDao.deleteHistory(name);
+
 		//解决中文乱码
 		 response.setContentType("text/html; charset=utf-8");
 	 PrintWriter out=response.getWriter();

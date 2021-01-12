@@ -1,15 +1,14 @@
 package com.gdut.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.gdut.dao.BookRentDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.gdut.bean.ModifyUser;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Servlet implementation class ModifyuserServlet
@@ -44,9 +43,8 @@ public class ModifyuserServlet extends HttpServlet {
 		 String name=request.getParameter("name");
 		 String end=request.getParameter("end");
 		
-	
-		ModifyUser bookadd=new ModifyUser();
-		bookadd.modify(end, name);
+		BookRentDao bookRentDao = new BookRentDao();
+		bookRentDao.updateReturn(end,name);
 		
 		//解决中文乱码
 		 response.setContentType("text/html; charset=utf-8");
