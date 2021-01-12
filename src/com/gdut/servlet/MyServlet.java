@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.gdut.dao.UserDao;
 import com.gdut.dao.AdminDao;
+import com.gdut.model.User;
+import com.gdut.model.UserInfo;
 
 /**
  * Servlet implementation class MyServlet
@@ -44,13 +46,15 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //设置数据编码，防止插入到mysql乱码
         request.setCharacterEncoding("utf-8");
-
-        String usertype = request.getParameter("usertype");//获取checkbox为管理员还是普通用户
+        //获取checkbox为管理员还是普通用户
+        String usertype = request.getParameter("usertype");
         //获取数据库的用户名和密码
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         boolean userFlag = false;
         boolean adminFlag = false;
+
+        UserInfo userInfoSession = new UserInfo();
 
         if ("1".equals(usertype)) {
             //普通用户页面
@@ -61,9 +65,10 @@ public class MyServlet extends HttpServlet {
             }
 
             if (userFlag) {
+                userInfoSession = UserDao.queryUserInfo(userId, password);
+                //设置用户session
                 HttpSession session = request.getSession();
-                session.setAttribute("username", UserDao.queryUserName(userId, password));
-                session.setAttribute("userId", userId);
+                session.setAttribute("userInfo", userInfoSession);
                 response.sendRedirect("NormalUser.jsp");
             } else {
                 //解决中文乱码

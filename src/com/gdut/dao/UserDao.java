@@ -1,5 +1,7 @@
 package com.gdut.dao;
 
+import com.gdut.model.UserInfo;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
@@ -49,6 +51,36 @@ public class UserDao {
 		}
 	}
 
+	public static UserInfo queryUserInfo(String userId, String password) {
+		UserInfo userInfo = new UserInfo();
+		String sql = "select * from userinfo where userId=? and password=?";
+		try (Connection conn = DriverManager.getConnection(DBConnect.JDBC_URL, DBConnect.JDBC_USER, DBConnect.JDBC_PASSWORD)) {
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+				ps.setString(1, userId);
+				ps.setString(2, password);
+				try (ResultSet result = ps.executeQuery()) {
+					if (result.next()) {
+						userInfo.setUsername(result.getString("username"));
+						userInfo.setUserId(userId);
+						userInfo.setAccount(result.getFloat("acount"));
+						userInfo.setAge(result.getInt("age"));
+						String sex = result.getString("sex");
+						//当用户未填写性别时
+						if (sex==null) {
+							userInfo.setSex("未知");
+						} else {
+							userInfo.setSex(sex);
+						}
+
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userInfo;
+	}
+
 	public static String queryUserName(String userId, String password) {
 		String userName = "";
 		String sql = "select username from " + TABLE
@@ -68,5 +100,21 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return userName;
+	}
+
+	public static void updatePwd(String userId, String newPassword) {
+		String sql = "update " + TABLE
+				+ " set " + "password=? "
+				+ "where userId=?";
+
+		try (Connection conn = DriverManager.getConnection(DBConnect.JDBC_URL, DBConnect.JDBC_USER, DBConnect.JDBC_PASSWORD)) {
+			try (PreparedStatement ps = conn.prepareStatement(sql)) {
+				ps.setString(1, newPassword);
+				ps.setString(2, userId);
+				ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

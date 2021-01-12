@@ -1,12 +1,15 @@
 package com.gdut.servlet;
 
 import com.gdut.dao.AdminDao;
+import com.gdut.dao.UserDao;
+import com.gdut.model.UserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -39,17 +42,22 @@ public class ModifyPwdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //设置数据编码，防止插入到mysql乱码
         request.setCharacterEncoding("utf-8");
-        //获取数据库的用户名和密码
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
 
-        AdminDao adminDao = new AdminDao();
-        adminDao.updatePwd(username,password);
+        //获取session
+        HttpSession session = request.getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+
+        //获取数据库的用户名和密码
+        String userId = userInfo.getUserId();
+        String newPassword = request.getParameter("newPassword");
+
+        //修改用户密码
+        UserDao.updatePwd(userId,newPassword);
 
         //解决中文乱码
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
-        out.print("<script>alert('管理员密码修改成功!'); window.location.href='Admini_Main.jsp'</script>");
+        out.print("<script>alert('密码修改成功!');</script>");
 
 
     }

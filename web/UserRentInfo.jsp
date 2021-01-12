@@ -1,6 +1,7 @@
 <%@ page import="com.gdut.model.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.gdut.dao.BookRentDao" %>
+<%@ page import="com.gdut.model.UserInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,7 +12,7 @@
 </head>
 <body>
 <%
-    String userId = (String) session.getAttribute("userId");
+    UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
 %>
 <div class="am-cf admin-main" style="padding-top: 0px;">
     <!-- content start -->
@@ -56,7 +57,7 @@
                                 </thead>
                                 <tbody id="tUser">
                                 <%
-                                    ArrayList<User> list = BookRentDao.queryHistory(userId);
+                                    ArrayList<User> list = BookRentDao.queryHistory(userInfo.getUserId());
                                     for (User user : list) {
                                 %>
                                 <tr>

@@ -1,3 +1,4 @@
+<%@ page import="com.gdut.model.UserInfo" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,8 +24,7 @@
 </head>
 <body>
 <%
-    String userId = (String) session.getAttribute("userId");
-    String username = (String) session.getAttribute("username");
+    UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 %>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
@@ -38,7 +38,7 @@
                 <ul class="cl">
                     <li>用户</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A"><%=username%><i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A"><%=userInfo.getUsername()%><i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li>
                                 <a href="Login.jsp">退出</a>
