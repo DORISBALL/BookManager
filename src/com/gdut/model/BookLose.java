@@ -1,4 +1,4 @@
-package com.gdut.book;
+package com.gdut.model;
 
 public class BookLose {
 	String booklose;

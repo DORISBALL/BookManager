@@ -1,29 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="Bookmark" href="/favicon.ico">
-    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <link rel="Shortcut Icon" href="/favicon.ico"/>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="lib/html5shiv.js"></script>
     <script type="text/javascript" src="lib/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="statics/css/H-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="statics/css/H-ui.admin.css" />
-    <link rel="stylesheet" type="text/css" href="statics/css/Hui-iconfont/1.0.8/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="statics/skin/default/skin.css" id="skin" />
-    <link rel="stylesheet" type="text/css" href="statics/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="statics/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="statics/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="statics/css/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="statics/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="statics/css/style.css"/>
     <!--[if IE 6]>
-    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>用户界面</title>
 </head>
 <body>
 <%
-    String list = (String) session.getAttribute("username");
+    String userId = (String) session.getAttribute("userId");
+    String username = (String) session.getAttribute("username");
 %>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
@@ -37,19 +38,20 @@
                 <ul class="cl">
                     <li>用户</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A"><%=list %> <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A"><%=username%><i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
-
                             <li>
-                                <a href="#">退出</a>
+                                <a href="Login.jsp">退出</a>
                             </li>
                         </ul>
                     </li>
                     <li id="Hui-msg">
-                        <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a>
+                        <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont"
+                                                                                           style="font-size:18px">&#xe68a;</i></a>
                     </li>
                     <li id="Hui-skin" class="dropDown right dropDown_hover">
-                        <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
+                        <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont"
+                                                                                style="font-size:18px">&#xe62a;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li>
                                 <a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a>
@@ -80,53 +82,17 @@
     <div class="menu_dropdown bk_2">
 
         <dl id="menu-admin">
-            <dt><i class="Hui-iconfont">&#xe62d;</i>书籍管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe62d;</i>借阅管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
 
                     <li>
-                        <a data-href="BookInfo.jsp" data-title="书籍信息" href="javascript:void(0)">书籍信息</a>
+                        <a data-href="UserRentInfo.jsp" data-title="借阅信息" href="javascript:void(0)">借阅信息</a>
                     </li>
                 </ul>
             </dd>
         </dl>
 
-        <dl id="menu-product">
-            <dt><i class="Hui-iconfont">&#xe620;</i> 读者管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li>
-                        <a data-href="User.jsp" data-title="查询读者信息" href="javascript:void(0)">用户列表</a>
-                    </li>
-
-                </ul>
-            </dd>
-        </dl>
-
-        </dl>
-
-
-        <dl id="menu-tongji">
-            <dt><i class="Hui-iconfont">&#xe61a;</i> 查询统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li>
-                        <a data-href="Charts.jsp" data-title="折线图" href="javascript:void(0)">统计图</a>
-                    </li>
-
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-system">
-            <dt><i class="Hui-iconfont">&#xe62e;</i> 登记书籍<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li>
-                        <a data-href="BookManager.jsp" data-title="书籍管理" href="javascript:void(0)">书籍管理</a>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
         <dl id="menu-system">
             <dt><i class="Hui-iconfont">&#xe62e;</i> 账号管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -164,8 +130,8 @@
 
 <div class="contextMenu" id="Huiadminmenu">
     <ul>
-        <li id="closethis">关闭当前 </li>
-        <li id="closeall">关闭全部 </li>
+        <li id="closethis">关闭当前</li>
+        <li id="closeall">关闭全部</li>
     </ul>
 </div>
 <!--_footer 作为公共模版分离出去-->
@@ -178,7 +144,7 @@
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         /*$("#min_title_list li").contextMenu('Huiadminmenu', {
             bindings: {
                 'closethis': function(t) {

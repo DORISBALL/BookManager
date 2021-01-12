@@ -1,6 +1,6 @@
 package com.gdut.dao;
 
-import com.gdut.book.BookLose;
+import com.gdut.model.BookLose;
 
 import java.sql.*;
 import java.util.ArrayList;

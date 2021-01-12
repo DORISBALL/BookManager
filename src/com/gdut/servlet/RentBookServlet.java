@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/RentBookServlet")
 public class RentBookServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -22,26 +22,26 @@ public class RentBookServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//设置数据编码，防止插入到mysql乱码
-		request.setCharacterEncoding("utf-8");
-		//获取到要添加书籍的信息
-		 String book=request.getParameter("book");
-		 String grade= request.getParameter("grade");
-		String sex=request.getParameter("sex");
-		String	start= request.getParameter("start");
-		String	end= request.getParameter("end");
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //设置数据编码，防止插入到mysql乱码
+        request.setCharacterEncoding("utf-8");
+        //获取到要添加书籍的信息
+        String book = request.getParameter("book");
+        String grade = request.getParameter("grade");
+        String sex = request.getParameter("sex");
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
+    }
 
 }

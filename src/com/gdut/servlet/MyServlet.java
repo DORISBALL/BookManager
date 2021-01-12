@@ -47,7 +47,7 @@ public class MyServlet extends HttpServlet {
 
         String usertype = request.getParameter("usertype");//获取checkbox为管理员还是普通用户
         //获取数据库的用户名和密码
-        String username = request.getParameter("username");
+        String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         boolean userFlag = false;
         boolean adminFlag = false;
@@ -55,11 +55,15 @@ public class MyServlet extends HttpServlet {
         if ("1".equals(usertype)) {
             //普通用户页面
             try {
-                userFlag = UserDao.check(username, password);
+                userFlag = UserDao.check(userId, password);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-            }//System.out.println("flag为"+flag);
+            }
+
             if (userFlag) {
+                HttpSession session = request.getSession();
+                session.setAttribute("username", UserDao.queryUserName(userId, password));
+                session.setAttribute("userId", userId);
                 response.sendRedirect("NormalUser.jsp");
             } else {
                 //解决中文乱码
@@ -70,14 +74,15 @@ public class MyServlet extends HttpServlet {
         } else if ("2".equals(usertype)) {
             //管理员页面
             try {
-                adminFlag = AdminDao.check(username, password);
+                adminFlag = AdminDao.check(userId, password);
             }catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
             if (adminFlag) {
                 HttpSession session = request.getSession();
-                session.setAttribute("username", username);
+                session.setAttribute("username", AdminDao.queryAdminName(userId, password));
+                session.setAttribute("userId", userId);
                 response.sendRedirect("Admini_Main.jsp");
                 //在管理界面上显示管理员用户名
             } else {

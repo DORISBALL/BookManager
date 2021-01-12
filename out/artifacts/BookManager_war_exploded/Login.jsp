@@ -72,8 +72,8 @@
 <body>
 <form  class="box"  action="MyServlet" method="post">
 			<h1>图书管理登录</h1>
-			<input type="text" name="username" id="" value=""  placeholder="用户名"/>
-			<input type="password" name="password" id="" value="" placeholder="密码" />
+			<input type="text" name="userId"  value=""  placeholder="用户名"/>
+			<input type="password" name="password"  value="" placeholder="密码" />
 			<label>身份:</label>
 			<label>用户</label>
 			<input type="radio" value="1" name="usertype">

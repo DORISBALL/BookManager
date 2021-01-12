@@ -1,6 +1,6 @@
 package com.gdut.dao;
 
-import com.gdut.book.Book;
+import com.gdut.model.Book;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ public class BookDao {
      * @return {@code ArrayList} of book
      */
     public static ArrayList<Book> queryBook() {
-        String sql = "select " + TABLE
-                + " from " + ALL_FIELD;
+        String sql = "select " + ALL_FIELD
+                + " from " + TABLE;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,8 +27,8 @@ public class BookDao {
                     try (ResultSet result = ps.executeQuery()) {
                         while (result.next()) {
                             //从数据库获取书籍信息
-                            int isbn = result.getInt("isbn");
-                            int price = result.getInt("price");
+                            String isbn = result.getString("isbn");
+                            float price = result.getFloat("price");
                             String publish = result.getString("publish");
                             String author = result.getString("author");
                             String bookname = result.getString("bookname");

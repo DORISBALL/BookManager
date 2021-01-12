@@ -1,4 +1,4 @@
-package com.gdut.bean;
+package com.gdut.model;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
